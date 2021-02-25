@@ -10,7 +10,7 @@ def hammingDistance(string1, string2):
     return dist
 
 
-def generateEditDistanceTable(string1, string2):
+def generateEditDistanceTable(string1, string2, paths=False):
     tab = [[0 for i in range(len(string1) + 1)]
            for j in range(len(string2) + 1)]
 
@@ -46,19 +46,22 @@ def generateEditDistanceTable(string1, string2):
                 tab[j][i] = min(choose)
                 prevsTab[j][i] = prevs[choose.index(min(choose))]
 
-    return tab, prevsTab
+    if paths:
+        return tab, prevsTab
+    else:
+        return tab
 
 
 def editDistance(string1, string2):
 
-    tab, _ = generateEditDistanceTable(string1, string2)
+    tab = generateEditDistanceTable(string1, string2)
 
     return tab[-1][-1]
 
 
 def displayEdits(string1, string2, compact=True):
 
-    _, previousCell = generateEditDistanceTable(string1, string2)
+    _, previousCell = generateEditDistanceTable(string1, string2, paths=True)
 
     if compact:
         edited1 = edited2 = ""
@@ -121,6 +124,3 @@ def displayEdits(string1, string2, compact=True):
             i = prev_i
 
         return steps
-
-
-editDistance("abcd", "efgh")
