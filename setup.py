@@ -1,11 +1,25 @@
-from setuptools import setup
+from setuptools import setup, find_packages
 
-setup(name='ambio',
-      version='0.1',
-      description='A lightweight Bioinformatics library',
-      url='https://github.com/albertomosconi/ambio',
-      author='Alberto Mosconi',
-      author_email="albertomaria.mosconi@gmail.com",
-      license='MIT',
-      packages=['ambio'],
-      zip_safe=False)
+with open("README.md", "r", encoding="utf-8") as fh:
+    long_description = fh.read()
+
+setup(
+    name="ambio",
+    version="0.1.2",
+    author="Alberto Mosconi",
+    author_email="albertomaria.mosconi@gmail.com",
+    description="A lightweight Bioinformatics library",
+    long_description=long_description,
+    long_description_content_type="text/markdown",
+    url="https://github.com/albertomosconi/ambio",
+    project_urls={
+        "Bug Tracker": "https://github.com/albertomosconi/ambio/issues",
+    },
+    classifiers=[
+        "Programming Language :: Python :: 3",
+        "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
+        "Operating System :: OS Independent",
+    ],
+    packages=find_packages(),
+    python_requires='>=3.6',
+)
