@@ -1,3 +1,15 @@
+def hammingDistance(string1, string2):
+    if len(string1) != len(string2):
+        raise ValueError("The two given strings are not the same length.")
+
+    dist = 0
+    for i in range(len(string1)):
+        if string1[i] != string2[i]:
+            dist += 1
+
+    return dist
+
+
 def generateEditDistanceTable(string1, string2):
     tab = [[0 for i in range(len(string1) + 1)]
            for j in range(len(string2) + 1)]
