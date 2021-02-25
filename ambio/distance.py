@@ -10,7 +10,7 @@ def hammingDistance(string1, string2):
     return dist
 
 
-def generateEditDistanceTable(string1, string2, paths=False):
+def generateEditDistanceTable(string1, string2, paths=False, substitutionWeight=1, deletionInsertionWeight=1):
     tab = [[0 for i in range(len(string1) + 1)]
            for j in range(len(string2) + 1)]
 
@@ -28,18 +28,18 @@ def generateEditDistanceTable(string1, string2, paths=False):
             prevs = []
 
             if j > 0:
-                choose.append(tab[j-1][i] + 1)
+                choose.append(tab[j-1][i] + deletionInsertionWeight)
                 prevs.append((j-1, i))
 
             if i > 0:
-                choose.append(tab[j][i-1] + 1)
+                choose.append(tab[j][i-1] + deletionInsertionWeight)
                 prevs.append((j, i-1))
 
             if j > 0 and i > 0:
                 if string1[i] == string2[j]:
                     choose.append(tab[j-1][i-1])
                 else:
-                    choose.append(tab[j-1][i-1] + 1)
+                    choose.append(tab[j-1][i-1] + substitutionWeight)
                 prevs.append((j-1, i-1))
 
             if len(choose) > 0:
