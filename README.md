@@ -12,19 +12,17 @@ $ pip install ambio
 
 ## Usage
 
-You can import the `EditDistance` module to calculate the edit distance between two strings of your choice, and get the table used for this computation.
+You can import the `distance` module to calculate the edit distance between two strings of your choice, and get the table used for this computation.
 
 ```python
-from ambio.EditDistance import EditDistance
-
-d = EditDistance("saturday", "sunday")
+from ambio.distance import editDistance, generateEditDistanceTable
 
 # get the edit distance between the two strings
-print(d.getDistance())
+print(editDistance("sunday", "saturday"))
 
 # get the table with all the edit
 # distances between the possible substrings
-print(d.getTable())
+print(generateEditDistanceTable("sunday", "saturday"))
 ```
 
 ## Development
