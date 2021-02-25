@@ -123,4 +123,5 @@ def displayEdits(string1, string2, compact=True):
             j = prev_j
             i = prev_i
 
+        steps.reverse()
         return steps

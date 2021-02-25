@@ -1,6 +1,6 @@
 # Ambio
 
-A light-weight bioinformatics library written in Python.
+A light-weight bioinformatics library written in Python. It contains a variety of algorithms and functions that deal with strings.
 
 ## Installation
 
@@ -12,17 +12,35 @@ $ pip install ambio
 
 ## Usage
 
-You can import the `distance` module to calculate the edit distance between two strings of your choice, and get the table used for this computation.
+- The `distance` module contains functions that calculate the Edit and Hamming distance between strings, plus other related methods.
 
 ```python
-from ambio.distance import editDistance, generateEditDistanceTable
+from ambio import distance
 
-# get the edit distance between the two strings
-print(editDistance("sunday", "saturday"))
+# returns the hamming distance between two strings,
+# if the two strings are not the same length, and Exception is raised
+print(distance.hammingDistance("helloworld", "ciaomondo!"))
+
+# returns the edit distance between the two strings
+print(distance.editDistance("sunday", "saturday"))
 
 # get the table with all the edit
 # distances between the possible substrings
-print(generateEditDistanceTable("sunday", "saturday"))
+table = distance.generateEditDistanceTable("sunday", "saturday")
+
+# you can also pass an option to get a table of the coordinates of
+# the previous cell, this is useful for the backtracking process
+table, paths = distance.generateEditDistanceTable("sunday", "saturday", paths=True)
+
+# display the necessary edits to go from the first input string to the second. In this example,
+# s1: "s--unday"
+# s2: "saturday"
+s1, s2 = distance.displayEdits("sunday", "saturday")
+
+# by setting the 'compact' option to False, a list containing all the iterations
+# that go from the first string to the second is returned instead
+# in this case: ['sunday', 'saunday', 'satunday', 'saturday']
+steps = distance.displayEdits("sunday", "saturday", compact=False)
 ```
 
 ## Development
