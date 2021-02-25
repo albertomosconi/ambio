@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="ambio",
-    version="0.1.2",
+    version="0.2.0",
     author="Alberto Mosconi",
     author_email="albertomaria.mosconi@gmail.com",
     description="A lightweight Bioinformatics library",
@@ -24,4 +24,9 @@ setup(
     ],
     packages=find_packages(),
     python_requires='>=3.6',
+    extras_requires={
+        "dev": [
+            "pytest>=6.2.2",
+        ],
+    },
 )
