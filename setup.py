@@ -5,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setup(
     name="ambio",
-    version="0.2.0",
+    version="0.2.2",
     author="Alberto Mosconi",
     author_email="albertomaria.mosconi@gmail.com",
     description="A lightweight Bioinformatics library",

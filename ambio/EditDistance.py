@@ -1,39 +1,48 @@
 class EditDistance:
 
     def __init__(self, S, T):
-        self.S = S
-        self.T = T
-        self.tab = []
+        self.__string1 = S
+        self.__string2 = T
+        self.__tab = []
 
-    def calculate(self):
-        self.tab = [[0 for i in range(len(self.S) + 1)]
-                    for j in range(len(self.T) + 1)]
+    def __genTable(self):
+        self.__tab = [[0 for i in range(len(self.__string1) + 1)]
+                      for j in range(len(self.__string2) + 1)]
 
-        self.S = "-" + self.S
-        self.T = "-" + self.T
+        self.__string1 = "-" + self.__string1
+        self.__string2 = "-" + self.__string2
 
-        for j in range(len(self.T)):
+        for j in range(len(self.__string2)):
 
-            for i in range(len(self.S)):
+            for i in range(len(self.__string1)):
 
                 choose = []
 
                 if j > 0:
-                    choose.append(self.tab[j-1][i] + 1)
+                    choose.append(self.__tab[j-1][i] + 1)
 
                 if i > 0:
-                    choose.append(self.tab[j][i-1] + 1)
+                    choose.append(self.__tab[j][i-1] + 1)
 
                 if j > 0 and i > 0:
-                    if self.S[i] == self.T[j]:
-                        choose.append(self.tab[j-1][i-1])
+                    if self.__string1[i] == self.__string2[j]:
+                        choose.append(self.__tab[j-1][i-1])
                     else:
-                        choose.append(self.tab[j-1][i-1] + 1)
+                        choose.append(self.__tab[j-1][i-1] + 1)
 
                 if len(choose) > 0:
-                    self.tab[j][i] = min(choose)
+                    self.__tab[j][i] = min(choose)
 
-        return self.tab[-1][-1]
+    def getDistance(self):
+
+        if len(self.__tab) == 0:
+            self.__genTable()
+
+        return self.__tab[-1][-1]
 
     def getTable(self):
-        return self.tab
+
+        if len(self.__tab) == 0:
+            self.__genTable()
+
+        return self.__tab
