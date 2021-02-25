@@ -4,6 +4,9 @@ class EditDistance:
 
     Methods
     -------
+    getStrings()
+        Returns the two string attributes in a list
+
     getDistance()
         Returns the Edit Distance between the two string attributes
 
@@ -43,6 +46,15 @@ class EditDistance:
 
                 if len(choose) > 0:
                     self.__tab[j][i] = min(choose)
+
+    def getStrings(self):
+        """Returns the two string attributes in a list
+
+        :returns: a list with the two string attributes
+        :rtype: list
+        """
+
+        return [self.__string1, self.__string2]
 
     def getDistance(self):
         """Returns the Edit Distance between the two string attributes
