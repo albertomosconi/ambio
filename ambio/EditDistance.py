@@ -1,4 +1,15 @@
 class EditDistance:
+    """
+    A class used to group all the functions regarding the Edit Distance between two strings
+
+    Methods
+    -------
+    getDistance()
+        Returns the Edit Distance between the two string attributes
+
+    getTable()
+        Returns the table with the Edit distances between all the possible substrings of the two attributes 
+    """
 
     def __init__(self, S, T):
         self.__string1 = S
@@ -34,6 +45,11 @@ class EditDistance:
                     self.__tab[j][i] = min(choose)
 
     def getDistance(self):
+        """Returns the Edit Distance between the two string attributes
+
+        :returns: the edit distance between the two strings attributes
+        :rtype: int
+        """
 
         if len(self.__tab) == 0:
             self.__genTable()
@@ -41,6 +57,11 @@ class EditDistance:
         return self.__tab[-1][-1]
 
     def getTable(self):
+        """Returns the table with the Edit distances between all the possible substrings of the two string attributes
+
+        :returns: the table with the Edit distances between all the possible substrings
+        :rtype: list
+        """
 
         if len(self.__tab) == 0:
             self.__genTable()
