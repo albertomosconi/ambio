@@ -37,8 +37,7 @@ def alignmentScoreTable(
         substitutionWeight=-1,
         matchWeight=1
 ):
-    """Generates the table of scores needed for finding the 
-        alignment score with the Needleman-Wunsch algorithm.
+    """Generates the table of scores needed for finding the alignment score with the Needleman-Wunsch algorithm.
 
     :param str string1: The first string to align.
     :param str string2: The second string to align.
@@ -100,8 +99,7 @@ def alignmentScore(
         substitutionWeight=-1,
         matchWeight=1
 ):
-    """Calculate the alignment score of two given strings 
-        using the Needleman–Wunsch algorithm.
+    """Calculate the alignment score of two given strings using the Needleman–Wunsch algorithm.
 
     :param str string1: The first string to align.
     :param str string2: The second string to align.
@@ -128,8 +126,7 @@ def showAlignment(
         substitutionWeight=-1,
         matchWeight=1
 ):
-    """Returns a visual representation of the alignment of 
-        two given strings using the Needleman–Wunsch algorithm.
+    """Returns a visual representation of the alignment of two given strings using the Needleman–Wunsch algorithm.
 
     :param str string1: The first string to align.
     :param str string2: The second string to align.
