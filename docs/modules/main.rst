@@ -3,7 +3,6 @@ Reference
 
 .. automodule:: ambio
    :members:
-   :undoc-members:
    :show-inheritance:
    
 Submodule: align
@@ -11,5 +10,11 @@ Submodule: align
 
 .. automodule:: ambio.align
    :members:
-   :undoc-members:
+   :show-inheritance:
+
+Submodule: match
+----------------
+
+.. automodule:: ambio.match
+   :members:
    :show-inheritance:
