@@ -229,3 +229,32 @@ def showAlignment(
         i = prev_i
 
     return [edited1, edited2]
+
+
+def editDistance(string1, string2):
+    """Calculates the edit distance between two strings.
+
+    The edit distance is a way of quantifying how dissimilar two strings (e.g., words) are to one 
+    another by counting the minimum number of operations required to transform one string into the other.
+
+    Learn more: `Edit distance [wikipedia] <https://en.wikipedia.org/wiki/Edit_distance>`_
+
+    :param str string1: The first string
+    :param str string2: The second string
+    :return: The edit distance between `string1` and `string2`.
+    :rtype: int
+
+    **Example code**
+
+    .. code:: python
+
+        >> editDistance("sunday", "saturday")
+        3
+    """
+
+    return abs(alignmentScore(
+        string1, string2,
+        insertionDeletionWeight=-1,
+        substitutionWeight=-1,
+        matchWeight=0
+    ))

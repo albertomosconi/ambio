@@ -1,16 +1,13 @@
 Documentation
 =============
 
-Module contents
----------------
-
 .. automodule:: ambio
    :members:
    :undoc-members:
    :show-inheritance:
    
-Algs submodule
---------------
+Submodule: algs
+---------------
 
 .. automodule:: ambio.algs
    :members:
