@@ -1,5 +1,5 @@
-Documentation
-=============
+Reference
+=========
 
 .. automodule:: ambio
    :members:
