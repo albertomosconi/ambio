@@ -6,10 +6,10 @@ Reference
    :undoc-members:
    :show-inheritance:
    
-Submodule: algs
----------------
+Submodule: align
+----------------
 
-.. automodule:: ambio.algs
+.. automodule:: ambio.align
    :members:
    :undoc-members:
    :show-inheritance:
