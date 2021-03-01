@@ -1,23 +1,5 @@
-"""
-A collection of Bioinformatics Algorithms, mainly involving strings.
-
-Features the most famous and useful algorithms used for matching and analizing DNA sequences.
-
-
-Functions
----------
-
-hammingDistance()
-    Calculates the Hamming distance between two strings. 
-
-alignmentScoreTable()
-    Generates the table of scores for finding the alignment score with the Needleman-Wunsch algorithm.
-
-alignmentScore()
-    Calculates the alignment score of two strings with the Needleman–Wunsch algorithm.
-
-showAlignment()
-    Returns a visual representation of the alignment of two given strings using the Needleman–Wunsch algorithm.
+"""Features the most famous and useful algorithms used for
+matching and analizing DNA sequences represented as strings.
 """
 
 
@@ -25,18 +7,15 @@ def hammingDistance(
     string1,
     string2
 ):
-    """
-    Calculates the Hamming distance between two strings.
+    """Calculates the Hamming distance between two strings.
 
-    Args:
-        string1 (str): The first string.
-        string2 (str): The second string.
+    :param str string1: The first string.
+    :param str string2: The second string.
 
-    Raises:
-        ValueError: If the two strings are not the same length.
+    :raises ValueError: The two strings are not the same length.
 
-    Returns:
-        distance (int): The Hamming distance between `string1` and `string2`.
+    :return: The Hamming distance between `string1` and `string2`.
+    :rtype: int
     """
 
     if len(string1) != len(string2):
@@ -58,19 +37,19 @@ def alignmentScoreTable(
         substitutionWeight=-1,
         matchWeight=1
 ):
-    """
-    Generates the table of scores needed for finding the alignment score with the Needleman-Wunsch algorithm.
+    """Generates the table of scores needed for finding the 
+        alignment score with the Needleman-Wunsch algorithm.
 
-    Args:
-        string1 (str): The first string to align.
-        string2 (str): The second string to align.
-        paths (bool): When True the table used for backtracking is also returned.
-        insertionDeletionWeight (int): The cost of an insertion or deletion, default is -2.
-        substitutionWeight (int): The cost of a substitution, default is -1.
-        matchWeight (int): The profit of a matching character, default is 1.
+    :param str string1: The first string to align.
+    :param str string2: The second string to align.
+    :param bool paths: When True the table used for backtracking is also returned.
+    :param int insertionDeletionWeight: The cost of an insertion or deletion, default is -2.
+    :param int substitutionWeight: The cost of a substitution, default is -1.
+    :param int matchWeight: The profit of a matching character, default is 1.
 
-    Returns:
-        table (list): A matrix containing the alignment scores, and optionally another matrix with the origin cells.
+    :return: A matrix containing the alignment scores, and 
+        optionally another matrix with the origin cells.
+    :rtype: list
     """
 
     tab = [[0 for i in range(len(string1) + 1)]
@@ -121,19 +100,19 @@ def alignmentScore(
         substitutionWeight=-1,
         matchWeight=1
 ):
-    """
-    Calculate the alignment score of two given strings using the Needleman–Wunsch algorithm.
+    """Calculate the alignment score of two given strings 
+        using the Needleman–Wunsch algorithm.
 
-    Args:
-        string1 (str): The first string to align.
-        string2 (str): The second string to align.
-        paths (bool): When True the table used for backtracking is also returned.
-        insertionDeletionWeight (int): The cost of an insertion or deletion, default is -2.
-        substitutionWeight (int): The cost of a substitution, default is -1.
-        matchWeight (int): The profit of a matching character, default is 1.
+    :param str string1: The first string to align.
+    :param str string2: The second string to align.
+    :param bool paths: When True the table used for backtracking is also returned.
+    :param int insertionDeletionWeight: The cost of an insertion or deletion, default is -2.
+    :param int substitutionWeight: The cost of a substitution, default is -1.
+    :param int matchWeight: The profit of a matching character, default is 1.
 
-    Returns:
-        table (list): A matrix containing the alignment scores, and optionally another matrix with the origin cells.
+    :return: A matrix containing the alignment scores, and 
+        optionally another matrix with the origin cells.
+    :rtype: list
     """
 
     table = alignmentScoreTable(
@@ -149,18 +128,18 @@ def showAlignment(
         substitutionWeight=-1,
         matchWeight=1
 ):
-    """
-    Returns a visual representation of the alignment of two given strings using the Needleman–Wunsch algorithm.
+    """Returns a visual representation of the alignment of 
+        two given strings using the Needleman–Wunsch algorithm.
 
-    Args:
-        string1 (str): The first string to align.
-        string2 (str): The second string to align.
-        insertionDeletionWeight (int): The cost of an insertion or deletion, default is -2.
-        substitutionWeight (int): The cost of a substitution, default is -1.
-        matchWeight (int): The profit of a matching character, default is 1.
+    :param str string1: The first string to align.
+    :param str string2: The second string to align.
+    :param int insertionDeletionWeight: The cost of an insertion or deletion, default is -2.
+    :param int substitutionWeight: The cost of a substitution, default is -1.
+    :param int matchWeight: The profit of a matching character, default is 1.
 
-    Returns:
-        aligned_strings (list): A list containing the two strings modified to show which edits have been made for them to be aligned.
+    :return: A list containing the two strings modified to show 
+        which edits have been made for them to be aligned.
+    :rtype: list
     """
 
     _, track = alignmentScoreTable(
