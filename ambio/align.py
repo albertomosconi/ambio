@@ -10,7 +10,7 @@ def hammingDistance(
     """Calculates the Hamming distance between two strings.
 
     The Hamming distance between two strings of equal length is the number of positions
-    at which the corresponding symbols are different. In other words, it measures 
+    at which the corresponding symbols are different. In other words, it measures
     the minimum number of substitutions required to change one string into the other,
     or the minimum number of errors that could have transformed one string into the other.
 
@@ -65,7 +65,7 @@ def alignmentScoreTable(
     :param int substitutionWeight: The cost of a substitution, default is -1.
     :param int matchWeight: The profit of a matching character, default is 1.
 
-    :return: A matrix containing the alignment scores, and 
+    :return: A matrix containing the alignment scores, and
         optionally another matrix with the origin cells.
     :rtype: list
 
@@ -140,7 +140,7 @@ def alignmentScore(
 ):
     """Calculate the alignment score of two given strings using the Needleman–Wunsch algorithm.
 
-    The algorithm essentially divides a large problem (e.g. the full sequence) into a series of smaller problems, 
+    The algorithm essentially divides a large problem (e.g. the full sequence) into a series of smaller problems,
     and it uses the solutions to the smaller problems to find an optimal solution to the larger problem.
 
     Learn more: `Needleman-Wunsch Algorithm [wikipedia] <https://en.wikipedia.org/wiki/Needleman-Wunsch_algorithm>`_
@@ -152,7 +152,7 @@ def alignmentScore(
     :param int substitutionWeight: The cost of a substitution, default is -1.
     :param int matchWeight: The profit of a matching character, default is 1.
 
-    :return: A matrix containing the alignment scores, and 
+    :return: A matrix containing the alignment scores, and
         optionally another matrix with the origin cells.
     :rtype: list
 
@@ -187,7 +187,7 @@ def showAlignment(
     :param int substitutionWeight: The cost of a substitution, default is -1.
     :param int matchWeight: The profit of a matching character, default is 1.
 
-    :return: A list containing the two strings modified to show 
+    :return: A list containing the two strings modified to show
         which edits have been made for them to be aligned.
     :rtype: list
 
@@ -234,7 +234,7 @@ def showAlignment(
 def editDistance(string1, string2):
     """Calculates the edit distance between two strings.
 
-    The edit distance is a way of quantifying how dissimilar two strings (e.g., words) are to one 
+    The edit distance is a way of quantifying how dissimilar two strings (e.g., words) are to one
     another by counting the minimum number of operations required to transform one string into the other.
 
     Learn more: `Edit distance [wikipedia] <https://en.wikipedia.org/wiki/Edit_distance>`_
@@ -258,3 +258,48 @@ def editDistance(string1, string2):
         substitutionWeight=-1,
         matchWeight=0
     ))
+
+
+def LCS(string1, string2):
+    """Calculates the Longest Common Subsequence between two strings.
+
+    Learn more: `Longest Common Subsequence problem [wikipedia] <https://en.wikipedia.org/wiki/Longest_common_subsequence_problem>`_
+
+    :param str string1: The first string.
+    :param str string2: The second string.
+    :return: The Longest Common Subsequence between `string1` and `string2`.
+    :rtype: str
+
+    **Example code**
+
+    .. code:: python
+
+        >> LCS("sunday", "saturday")
+        "suday"
+    """
+
+    _, p = alignmentScoreTable(
+        string1, string2, paths=True,
+        insertionDeletionWeight=0,
+        substitutionWeight=0, matchWeight=1
+    )
+
+    lcs = ""
+
+    j = len(string2)
+    i = len(string1)
+
+    while j != 0 and i != 0:
+
+        prev_j, prev_i = p[j][i]
+
+        # diagonal move
+        if prev_j == j-1 and prev_i == i-1:
+            # letters match
+            if string1[i-1] == string2[j-1]:
+                lcs = string1[i-1] + lcs
+
+        j = prev_j
+        i = prev_i
+
+    return lcs

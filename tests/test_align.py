@@ -19,3 +19,13 @@ def test_edit():
     assert align.editDistance("abcd", "abcd") == 0
     assert align.editDistance("abcd", "efh") == 4
     assert align.editDistance("abcd", "afh") == 3
+
+
+def test_lcs():
+    assert align.LCS("sunday", "saturday") == "suday"
+    assert align.LCS("", "hello") == ""
+    assert align.LCS("hello", "") == ""
+    assert align.LCS("", "") == ""
+    assert align.LCS("sunday", "robot") == ""
+    assert align.LCS("hello", "hello") == "hello"
+    assert align.LCS("123abc456", "kabck") == "abc"
